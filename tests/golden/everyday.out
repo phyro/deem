@@ -1,0 +1,99 @@
+{"input":"null","ok":true,"program":"\"ab\" * 0","stdout":"\"\"\n"}
+{"input":"null","ok":true,"program":"$__loc__","stdout":"{\"file\":\"<top-level>\",\"line\":1}\n"}
+{"input":"1.10","ok":true,"program":".","stdout":"1.10\n"}
+{"input":"12345678901234567890","ok":true,"program":".","stdout":"12345678901234567890\n"}
+{"input":"{\"a\":1.0e3}","ok":true,"program":".","stdout":"{\"a\":1.0E+3}\n"}
+{"input":"3","ok":true,"program":". * 2","stdout":"6\n"}
+{"input":"{\"a\":{\"b\":{\"d\":1}}}","ok":true,"program":". * {a: {b: {c: 1}}}","stdout":"{\"a\":{\"b\":{\"d\":1,\"c\":1}}}\n"}
+{"input":"{\"msg\":\"x\"}","ok":true,"program":". * {meta: {score: 0.5}}","stdout":"{\"msg\":\"x\",\"meta\":{\"score\":0.5}}\n"}
+{"input":"[1,2,3,4]","ok":true,"program":".[-1]","stdout":"4\n"}
+{"input":"[1,2,3,4]","ok":true,"program":".[10]","stdout":"null\n"}
+{"input":"[1,2,3,4]","ok":true,"program":".[1:3]","stdout":"[2,3]\n"}
+{"input":"[1,2,3]","ok":true,"program":".[5] = 1","stdout":"[1,2,3,null,null,1]\n"}
+{"input":"[1,2,3]","ok":true,"program":".[] |= . * 10","stdout":"[10,20,30]\n"}
+{"input":"{\"a\":{\"b\":{\"d\":1}}}","ok":true,"program":".a += {b: {c: 1}}","stdout":"{\"a\":{\"b\":{\"c\":1}}}\n"}
+{"input":"{\"a\":null}","ok":true,"program":".a // \"default\"","stdout":"\"default\"\n"}
+{"input":"{\"msg\":\"x\"}","ok":true,"program":".count //= 0","stdout":"{\"msg\":\"x\",\"count\":0}\n"}
+{"input":"{\"msg\":\"x\"}","ok":true,"program":".labels += [\"new\"]","stdout":"{\"msg\":\"x\",\"labels\":[\"new\"]}\n"}
+{"input":"{\"msg\":\"x\",\"meta\":{\"a\":1}}","ok":true,"program":".meta.score = 0.5","stdout":"{\"msg\":\"x\",\"meta\":{\"a\":1,\"score\":0.5}}\n"}
+{"input":"{\"msg\":\"x\"}","ok":true,"program":".meta.score = 0.5","stdout":"{\"msg\":\"x\",\"meta\":{\"score\":0.5}}\n"}
+{"input":"{\"msg\":\"x\"}","ok":true,"program":".meta.score? = 0.5","stdout":"{\"msg\":\"x\",\"meta\":{\"score\":0.5}}\n"}
+{"input":"{\"msg\":\"x\"}","ok":true,"program":".meta.tags[0] = \"new\"","stdout":"{\"msg\":\"x\",\"meta\":{\"tags\":[\"new\"]}}\n"}
+{"input":"{\"level\":\"error\",\"msg\":\"disk full\",\"n\":3}","ok":true,"program":".msg","stdout":"\"disk full\"\n"}
+{"input":"{\"level\":\"error\",\"msg\":\"disk full\",\"n\":3}","ok":true,"program":".n += 1","stdout":"{\"level\":\"error\",\"msg\":\"disk full\",\"n\":4}\n"}
+{"input":"{\"n\":4}","ok":true,"program":".n / 2, 1 / 1","stdout":"2\n1\n"}
+{"input":"{\"tags\":[\"API\",\"Db\"]}","ok":true,"program":".tags |= map(ascii_downcase)","stdout":"{\"tags\":[\"api\",\"db\"]}\n"}
+{"input":"null","ok":true,"program":"0.1 + 0.2","stdout":"0.30000000000000004\n"}
+{"input":"null","ok":false,"program":"1 / 0","stdout":""}
+{"input":"null","ok":true,"program":"1 / 3","stdout":"0.3333333333333333\n"}
+{"input":"\"hello\"","ok":true,"program":"@base64","stdout":"\"aGVsbG8=\"\n"}
+{"input":"[\"a\",1,\"b,c\"]","ok":true,"program":"@csv","stdout":"\"\\\"a\\\",1,\\\"b,c\\\"\"\n"}
+{"input":"\"it's\"","ok":true,"program":"@sh","stdout":"\"'it'\\\\''s'\"\n"}
+{"input":"[\"a\",1,\"b\\tc\"]","ok":true,"program":"@tsv","stdout":"\"a\\t1\\tb\\\\tc\"\n"}
+{"input":"\"a b&c\"","ok":true,"program":"@uri","stdout":"\"a%20b%26c\"\n"}
+{"input":"[{\"x\":1},{\"x\":2}]","ok":true,"program":"[.[] | .x] | add","stdout":"3\n"}
+{"input":"[1,\"a\",null,2.5]","ok":true,"program":"[.[] | numbers]","stdout":"[1,2.5]\n"}
+{"input":"[1,2,3]","ok":true,"program":"[limit(2; .[])]","stdout":"[1,2]\n"}
+{"input":"null","ok":true,"program":"[nan] | tojson","stdout":"\"[null]\"\n"}
+{"input":"{\"a\":1,\"b\":{\"c\":2}}","ok":true,"program":"[paths(type == \"number\")]","stdout":"[[\"a\"],[\"b\",\"c\"]]\n"}
+{"input":"null","ok":true,"program":"[range(0; 10; 3)]","stdout":"[0,3,6,9]\n"}
+{"input":"\"a1b2\"","ok":true,"program":"[scan(\"([a-z])([0-9])\")]","stdout":"[[\"a\",\"1\"],[\"b\",\"2\"]]\n"}
+{"input":"\"a1 b22 c333\"","ok":true,"program":"[scan(\"[0-9]+\")]","stdout":"[\"1\",\"22\",\"333\"]\n"}
+{"input":"[1,2,3]","ok":true,"program":"add","stdout":"6\n"}
+{"input":"[1,2,3,4]","ok":true,"program":"add / length","stdout":"2.5\n"}
+{"input":"[1,2,3]","ok":true,"program":"any(.[]; . > 2)","stdout":"true\n"}
+{"input":"65","ok":false,"program":"ascii","stdout":""}
+{"input":"\"Hello\"","ok":true,"program":"ascii_downcase","stdout":"\"hello\"\n"}
+{"input":"\"status 503 upstream\"","ok":true,"program":"capture(\"(?<code>[0-9]+)\")","stdout":"{\"code\":\"503\"}\n"}
+{"input":"[1,2,3,4]","ok":true,"program":"del(.[0, 2])","stdout":"[2,4]\n"}
+{"input":"[1,2,3,4]","ok":true,"program":"del(.[] | select(. > 2))","stdout":"[1,2]\n"}
+{"input":"{\"a\":1,\"b\":2,\"c\":3}","ok":true,"program":"del(.a, .b)","stdout":"{\"c\":3}\n"}
+{"input":"{\"user\":\"a\",\"password\":\"p\"}","ok":true,"program":"del(.password)","stdout":"{\"user\":\"a\"}\n"}
+{"input":"null","ok":true,"program":"env | type","stdout":"\"object\"\n"}
+{"input":"null","ok":false,"program":"error(\"x\") // 2","stdout":""}
+{"input":"[1,2,3]","ok":true,"program":"first, last","stdout":"1\n3\n"}
+{"input":"2.5","ok":true,"program":"floor, round, ceil","stdout":"2\n3\n3\n"}
+{"input":"[{\"key\":\"a\",\"value\":1},{\"name\":\"b\",\"value\":2}]","ok":true,"program":"from_entries","stdout":"{\"a\":1,\"b\":2}\n"}
+{"input":"\"{\\\"a\\\":1}\"","ok":true,"program":"fromjson","stdout":"{\"a\":1}\n"}
+{"input":"{\"a\":{\"b\":1}}","ok":true,"program":"getpath([\"a\",\"b\"])","stdout":"1\n"}
+{"input":"[{\"k\":\"a\"},{\"k\":\"b\"},{\"k\":\"a\"}]","ok":true,"program":"group_by(.k) | map({k: .[0].k, n: length})","stdout":"[{\"k\":\"a\",\"n\":2},{\"k\":\"b\",\"n\":1}]\n"}
+{"input":"\"axbx\"","ok":true,"program":"gsub(\"x\"; \"y\")","stdout":"\"ayby\"\n"}
+{"input":"{\"a\":null}","ok":true,"program":"has(\"a\")","stdout":"true\n"}
+{"input":"{\"x\":5}","ok":true,"program":"if .x > 3 then \"high\" else \"low\" end","stdout":"\"high\"\n"}
+{"input":"[104,105]","ok":true,"program":"implode","stdout":"\"hi\"\n"}
+{"input":"\"abcb\"","ok":true,"program":"index(\"b\")","stdout":"1\n"}
+{"input":"null","ok":false,"program":"input","stdout":""}
+{"input":"[\"a\",\"b\",3,null,true]","ok":true,"program":"join(\", \")","stdout":"\"a, b, 3, , true\"\n"}
+{"input":"{\"b\":1,\"a\":2}","ok":true,"program":"keys","stdout":"[\"a\",\"b\"]\n"}
+{"input":"{\"b\":1,\"a\":2}","ok":true,"program":"length","stdout":"2\n"}
+{"input":"null","ok":true,"program":"limit(0; 1, 2)","stdout":""}
+{"input":"\"v1.2\"","ok":true,"program":"ltrimstr(\"v\")","stdout":"\"1.2\"\n"}
+{"input":"[{\"x\":1},{\"x\":5},{\"x\":2}]","ok":true,"program":"map(.x) | max","stdout":"5\n"}
+{"input":"[{\"ok\":true},{\"ok\":false},{\"ok\":true}]","ok":true,"program":"map(select(.ok)) | length","stdout":"2\n"}
+{"input":"{\"a\":1,\"b\":2}","ok":true,"program":"map_values(. + 1)","stdout":"{\"a\":2,\"b\":3}\n"}
+{"input":"null","ok":true,"program":"now | type","stdout":"\"number\"\n"}
+{"input":"{\"a\":{\"b\":1}}","ok":true,"program":"paths","stdout":"[\"a\"]\n[\"a\",\"b\"]\n"}
+{"input":"[1,2,3]","ok":true,"program":"reduce .[] as $x (0; . + $x)","stdout":"6\n"}
+{"input":"{\"level\":\"error\",\"msg\":\"disk full\",\"n\":3}","ok":true,"program":"select(.level == \"error\") | .msg","stdout":"\"disk full\"\n"}
+{"input":"{\"a\":{\"b\":1}}","ok":true,"program":"setpath([\"a\",\"c\"]; 2)","stdout":"{\"a\":{\"b\":1,\"c\":2}}\n"}
+{"input":"[{\"t\":3},{\"t\":1},{\"t\":2}]","ok":true,"program":"sort_by(.t) | map(.t)","stdout":"[1,2,3]\n"}
+{"input":"\"a, b, c\"","ok":true,"program":"split(\", \")","stdout":"[\"a\",\"b\",\"c\"]\n"}
+{"input":"\"a, b\"","ok":true,"program":"splits(\", \")","stdout":"\"a\"\n\"b\"\n"}
+{"input":"1700000000","ok":true,"program":"strftime(\"%Y-%m-%d\")","stdout":"\"2023-11-14\"\n"}
+{"input":"\"axbx\"","ok":true,"program":"sub(\"x\"; \"y\")","stdout":"\"aybx\"\n"}
+{"input":"\"Disk ERROR\"","ok":true,"program":"test(\"err\"; \"i\")","stdout":"true\n"}
+{"input":"{\"a\":1,\"b\":2}","ok":true,"program":"to_entries","stdout":"[{\"key\":\"a\",\"value\":1},{\"key\":\"b\",\"value\":2}]\n"}
+{"input":"{\"a\":1,\"b\":\"x\"}","ok":true,"program":"to_entries | map(\"\\(.key)=\\(.value)\") | join(\"&\")","stdout":"\"a=1&b=x\"\n"}
+{"input":"1700000000","ok":true,"program":"todate","stdout":"\"2023-11-14T22:13:20Z\"\n"}
+{"input":"{\"a\":1.10}","ok":true,"program":"tojson","stdout":"\"{\\\"a\\\":1.10}\"\n"}
+{"input":"\"42\"","ok":true,"program":"tonumber","stdout":"42\n"}
+{"input":"{\"a\":[1,2]}","ok":true,"program":"tostring","stdout":"\"{\\\"a\\\":[1,2]}\"\n"}
+{"input":"{\"msg\":\"x\"}","ok":true,"program":"try (.meta.score = 0.5) catch \"caught\"","stdout":"{\"msg\":\"x\",\"meta\":{\"score\":0.5}}\n"}
+{"input":"null","ok":true,"program":"try error(\"boom\") catch .","stdout":"\"boom\"\n"}
+{"input":"[3,1,3,2]","ok":true,"program":"unique","stdout":"[1,2,3]\n"}
+{"input":"{\"a\":[\"x\",{\"b\":\"y\"}]}","ok":true,"program":"walk(if type == \"string\" then ascii_upcase else . end)","stdout":"{\"a\":[\"X\",{\"b\":\"Y\"}]}\n"}
+{"input":"{\"a\":1,\"b\":null}","ok":true,"program":"with_entries(select(.value != null))","stdout":"{\"a\":1}\n"}
+{"input":"{\"k\":\"a\",\"v\":1}","ok":true,"program":"{(.k): .v}","stdout":"{\"a\":1}\n"}
+{"input":"{\"k\":1,\"v\":1}","ok":false,"program":"{(.k): .v}","stdout":""}
+{"input":"{\"level\":\"error\",\"msg\":\"disk full\",\"n\":3}","ok":true,"program":"{level, n}","stdout":"{\"level\":\"error\",\"n\":3}\n"}
+{"input":"{\"level\":\"error\",\"msg\":\"disk full\",\"n\":3}","ok":true,"program":"{text: .msg, big: (.n > 2)}","stdout":"{\"text\":\"disk full\",\"big\":true}\n"}

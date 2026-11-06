@@ -1,0 +1,38 @@
+# build output, and the jq 1.7.1 binary tests/golden/regen.sh downloads
+target/
+
+# editors and OS
+.idea/
+.vscode/
+*.swp
+*~
+.DS_Store
+
+# backups rustfmt leaves behind
+**/*.rs.bk
+
+# jq's recorded outputs are test data, despite the repo-wide `*.out`
+!tests/golden/*.out
+
+# Local notes, not part of the repo
+/PLAN.md
+/TODO.md
+/LOCAL_MODEL.md
+/exact_vs_pack_tests.md
+
+# a trace written by hand at the top of the repo
+/run.json
+
+
+# Sources of the demo gifs in docs/demo/, and what recording them leaves in
+# examples/; only the gifs are kept
+/docs/demo/*.tape
+/docs/demo/*.fish
+/docs/demo/tree.txt
+/docs/demo/orders.txt
+/examples/run.json
+/examples/tree.txt
+/examples/orders.txt
+
+# what examples/trace.sh writes
+/examples/traces/

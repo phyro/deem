@@ -1,0 +1,12 @@
+module {input: "each"};
+# mislabeled: open issues that describe a bug but aren't labelled "bug"
+#
+#   deem run -J mislabeled issues.jsonl
+#
+# The model sees the title and body only; the output is the number and title.
+
+def main:
+  "does this describe something broken (a crash, an error, a hang)?" as $q
+  | select((.labels | index("bug")) == null)
+  | select(ask($q; {title, body}) > 0.7)
+  | "#\(.number) \(.title)";

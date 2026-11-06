@@ -1,0 +1,40 @@
+checkout fails with "payment declined" for every card since this morning
+none of our customers can pay, please help
+the checkout page shows a blank screen after entering the card
+we lost a day of sales because checkout was down
+customers get charged but the order doesn't appear
+is the checkout outage fixed yet?
+three customers say they were charged twice on Tuesday
+our orders from Tuesday afternoon are all missing
+the status page said all good while checkout was broken
+we need a refund policy for the orders lost in the outage
+the payment provider says your server rejected the calls
+customers are angry, checkout still times out on mobile
+we got 40 emails from customers who couldn't pay
+how do I find the orders that failed during the outage?
+can you credit us for the downtime?
+the checkout works again but the confirmation emails didn't go out
+our abandoned cart emails went to customers who tried to pay during the outage
+the order totals in the report are wrong for Tuesday
+how do I add a second shipping address?
+can I export last month's orders?
+the new product filters are great
+is there a way to bulk edit prices?
+how do I set up a discount for returning customers?
+do you integrate with QuickBooks?
+where do I change the store currency?
+the product images look blurry on mobile
+can I schedule a sale to start at midnight?
+the invoice PDF has my old address
+how do I add a size chart to a product?
+thanks for fixing checkout so quickly
+can staff accounts have limited permissions?
+how many products can I have on the basic plan?
+the shipping label printer prints half a label
+we'd like to translate the store into Italian
+the search on our store doesn't find products by SKU
+can customers pick up in store?
+is there an app for packing slips?
+how do I close the store for a holiday?
+the review widget stopped showing stars
+great support during the outage, you kept us informed

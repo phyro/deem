@@ -1,0 +1,300 @@
+refund still not received after 5 days
+please add two-factor authentication with a hardware key
+our payment failed but the card is fine
+the PDF export cuts off the last page
+checkout page keeps spinning forever on order #9651
+the API returns 500 for /v1/orders since 9am
+where can I find the changelog?
+you took my money two times for the same plan
+the export button moved, took me a while to find it
+the mobile app logs me out randomly
+the dashboard is very slow today
+is there a student discount?
+the app is slow today
+how do I add a teammate?
+the app crashes when I open settings on android 14
+can I change the email on my account?
+can you delete all my data (GDPR request)?
+charged twice for order #4507, please refund one
+love the new dark mode, thanks!
+no problems since the update, great job
+is there a problem with the API docs link?
+why do I have to log in every single time
+production is down, customers can't pay, need help now
+URGENT: our whole team is locked out of the dashboard
+invoice #2300 shows the wrong VAT number
+import from CSV fails on row 3221
+sync between phone and laptop is 12 minutes behind
+we were billed for 12 seats but only have 4
+wrong currency on my invoice, should be EUR
+password reset email never arrives
+notifications stopped working after the update
+can't log in with Google since this morning
+dark mode makes the charts unreadable
+feature request: let me schedule reports weekly
+great support yesterday, problem solved in minutes
+how do I export my invoices as CSV?
+is the API down? everything times out
+please cancel my subscription and refund this month
+thanks for the quick fix on the billing page
+the search ignores accents: café doesn't find cafe
+I upgraded to the annual plan but I'm still being billed monthly
+can I get a receipt with our company address on it?
+the trial ended early, it says 3 days left in my email
+my card expired, how do I update it before the next charge?
+do you offer discounts for nonprofits?
+why did my bill go up this month? nothing changed on our side
+I was charged after I cancelled, please explain
+we need a W-9 for our accounting department
+can we pay by bank transfer instead of card?
+the VAT reverse charge isn't applied, we are a German company
+please switch us to the cheaper plan from next month
+coupon code SPRING20 says invalid
+the price on the website is lower than what I paid
+I need invoices for the whole of last year in one PDF
+our finance team can't see the billing page, only the owner can
+payment page says "something went wrong", no other info
+I'd like a refund, the product doesn't do what the sales page said
+does the Pro plan include API access?
+the charge on my statement says ACME*SVC, is that you?
+how do I remove a seat without losing that user's data?
+we'd like to prepay for two years, is that possible?
+Apple Pay option disappeared from checkout
+our purchase order number has to be on the invoice
+refund went to my old card which is closed now
+billing emails go to someone who left the company
+can't download the invoice, the link gives a 404
+your app deleted three weeks of my notes
+the editor freezes when I paste a large table
+after the update, the sidebar covers half the screen on my laptop
+uploads over 100 MB fail at 99%
+the calendar shows every meeting one hour late since the time change
+search returns nothing for words I can see on the page
+emails from your system land in spam for all our customers
+two-factor codes from the app are always rejected
+the share link opens a blank page for people outside our team
+reports show yesterday's numbers as zero
+webhooks fire twice for every event
+the iPad app crashes on launch since version 4.2
+the CSV export puts all columns in one column
+dragging cards on the board doesn't work in Firefox
+pasting from Word brings in weird fonts that I can't remove
+undo doesn't work after I delete a comment
+the API rate limit hits us at 10 requests a minute, docs say 100
+images in comments don't load, just a broken icon
+the app uses 4 GB of memory after an hour
+autosave lost my last paragraph twice today
+the tables render fine in Chrome but are broken in Safari
+the progress bar is stuck at 0% on every import
+deleting a project took down the whole workspace for a minute
+users in Japan see garbled characters in their names
+I can't scroll the settings page on my phone
+the bulk edit changed every record, not just the ones I selected
+our SSO login loops back to the login page
+my account got locked after one wrong password
+I never got the verification email, checked spam too
+someone logged into my account from another country
+how do I transfer ownership of the workspace to my colleague?
+I lost my phone and with it my 2FA, how do I get back in?
+please merge my two accounts, I signed up twice by mistake
+the invite link says it expired but I just got it
+can I log in with a username instead of email?
+my colleague's account was deactivated but she's still here
+I'd like to close my account, how?
+the "remember me" checkbox doesn't remember me
+I changed my email and now I can't log in at all
+can admins see my private notes?
+how long do you keep our data after we cancel?
+we need SAML for our security review, do you support it?
+a former employee still has access, remove them please
+can you add a Slack integration?
+please let us set a default view for the whole team
+would love keyboard shortcuts for moving between tasks
+any plans for an offline mode?
+please add a way to export comments too
+it would be great to have a Linux desktop app
+can the API return results sorted by date?
+let us choose the start day of the week (Monday for us)
+add a bulk delete for old projects please
+we'd pay more for audit logs
+could you support Markdown in descriptions?
+I want to tag tasks with more than one label
+can you add Zapier triggers for new comments?
+please make the font size adjustable
+recurring tasks every other week would save me a lot of time
+a read-only role for clients would be perfect
+can you support SCIM for user provisioning?
+we'd like to embed a dashboard in our intranet
+any chance of a Gantt view?
+dark mode for the mobile app too please
+how do I move a task to another project?
+is there a limit on how many projects we can have?
+what's the difference between a member and a guest?
+where do I find my API key?
+does the API support pagination?
+can I use the free plan for a small charity?
+how do I turn off email notifications for comments?
+is there a way to print a board?
+what timezone are the reports in?
+do you have a status page?
+can I restore something I deleted last week?
+how do I set up a custom domain?
+is your service GDPR compliant?
+where are your servers located?
+how do I change the language to Spanish?
+can I connect two calendars?
+is there a mobile app for Android?
+how many people can be in one workspace?
+how do I duplicate a template?
+does the export include attachments?
+can guests comment without an account?
+what file types can I upload?
+is there an SLA on the enterprise plan?
+how do I archive a project without deleting it?
+do you have a referral program?
+can I change my username?
+the new onboarding is really clear, nice work
+just wanted to say the support team is fantastic
+the latest update made everything faster, thank you
+we moved our whole company over and everyone loves it
+the redesign looks great
+five stars, would recommend
+your docs are the best I've read in a while
+the import tool saved me a week of work
+I've been using it for two years and it just keeps getting better
+nothing to report, just checking this inbox works
+test ticket please ignore
+hi
+asdf
+I love it but my boss doesn't
+honestly the best purchase we made this year
+thank you for fixing the export so fast
+it's fine I guess
+not sure if this is the right place, but your office is lovely
+sorry, wrong company
+the payment problem from last week is solved now, thanks
+I had a problem with login but it fixed itself
+no complaints, the app works well
+someone at my company said you have a problem with invoices, do we?
+the app is great when it works, which is never
+oh great, another update that moves every button
+wonderful, the export broke again
+thanks for nothing, still waiting for my refund
+day 4 of waiting for a reply to my billing question
+I've sent three emails and nobody answers
+the checkout fails for every customer in Canada since this morning
+our store has been down for an hour, we are losing sales
+all our users got logged out and can't get back in
+the payment provider shows your API rejecting every call
+data from yesterday is missing for all our clients
+our scheduled reports went to the wrong customers
+security issue: I can see another company's projects
+our API key leaked on GitHub, please revoke it now
+the outage page says everything is fine but nothing loads
+we have a demo with a client in 30 minutes and the app won't open
+the import overwrote our live data with old data
+login works but every page is empty
+the mobile app shows other users' notifications
+our SSO certificate expires tomorrow, how do we update it?
+your system sent our invoice to the wrong customer
+my account shows $0 credit after I bought $500
+the app says I'm offline, but everything else works
+the screen goes white after I click save
+every second email notification is a duplicate
+my tasks are assigned to someone I don't know
+search is fine on the web but empty on the phone
+the date picker only shows the year 1970
+the tooltip covers the button I need to click
+I can't upload a profile picture, it says file too large for a 50 KB image
+the timer keeps running after I stop it
+comments show up under the wrong task
+the app forgets my filters every time I log in
+exported dates come out in American format, we need ISO
+favorites disappear after a week
+the new editor removed my tables' borders
+the chart legend overlaps the chart on small screens
+shortcuts don't work with a German keyboard
+the app keeps asking for permission to send notifications
+the archive is empty but I archived 40 projects
+the "last edited" time is always "just now"
+links in emails go to a page that says "not found"
+the API docs example for creating an order doesn't work
+your Python SDK throws an error on install with Python 3.13
+the webhook signature check fails with the secret from the dashboard
+the API returns dates without a timezone
+we get 429 errors even at night with no traffic
+the OAuth redirect drops our query parameters
+the GraphQL endpoint times out for queries over 100 items
+is there a sandbox for testing payments?
+does the API have a changelog?
+the API returns an empty list instead of a 404 for a missing project
+I'd like to cancel, the price went up too much
+we're switching to a competitor, please cancel at the end of the month
+cancel my account, I don't use it anymore
+can I pause my subscription for the summer?
+why can't I downgrade in the middle of the month?
+I want my money back for the unused months
+please confirm my cancellation, I got no email
+your cancellation page is impossible to find
+do you keep charging if I just delete the app?
+I was charged in USD but I'm in the UK
+can I get an invoice in my company's name instead of mine?
+the tax on my invoice is wrong for Australia
+please add our VAT ID to past invoices
+how do I get a refund for the duplicate seat?
+my bank says the charge was declined but you took it anyway
+the yearly discount wasn't applied
+I want to be billed by invoice, not by card
+we've been overcharged for three months
+the dashboard shows a balance we don't owe
+your sales rep promised a discount that isn't on the invoice
+the free trial asked for a card and charged it immediately
+what happens to our data if a payment fails?
+I paid but my account still says the plan expired
+our accountant needs invoices with a different numbering
+the update notes say the export is fixed but it isn't
+since Tuesday the app logs me out every 10 minutes
+the reminder emails come at 3am
+when I click "assign to me" it assigns to my manager
+the mobile app drains my battery in two hours
+my saved filters show other people's tasks
+I keep getting an error 418 when I save, what does that mean?
+the app is in English even though I set it to French
+the board view is blank but the list view shows everything
+I can't attach files from Google Drive anymore
+the search bar is gone after the update
+everything is so slow after the redesign
+the integration with Jira stopped syncing on Friday
+the font changed and now everything is tiny
+the counter on the inbox is always 1 even when it's empty
+our custom fields vanished from the export
+I get a warning about an insecure connection on your login page
+the "forgot password" link goes to a page in Chinese
+can you add a dark theme for the email notifications?
+how do I give someone access to only one project?
+please add an option to hide completed tasks
+does the desktop app work on Apple Silicon?
+how do I connect my Outlook calendar?
+can I see who changed a task and when?
+we want to import from Trello, is there a tool?
+can reports be sent as Excel instead of PDF?
+is there a limit on file uploads?
+we'd like a quote for 200 seats
+can I get a demo for my team next week?
+the app took my order but the customer never got a confirmation
+our receipts show the wrong store name
+the order history page is missing everything before March
+every refund we issue shows up twice in the report
+the stock count goes negative after a refund
+customers say the checkout asks for their address twice
+the discount is applied twice when the customer goes back a page
+our shipping rates disappeared from checkout
+orders from the mobile app have no phone number
+the product page loads in 12 seconds
+gift cards can't be used together with a coupon
+we can't print shipping labels since the update
+the tax report doesn't match our sales report
+PayPal orders stay "pending" forever
+the store is showing prices without VAT to EU customers
+customers in Mexico can't select their state
+the abandoned cart email went out to people who already paid

@@ -1,0 +1,10 @@
+1	Oct 19 14:22:01 api-7f4 ERROR upstream timeout after 30s for /v1/checkout
+0	Oct 19 14:22:03 worker-2 INFO retrying job 8831
+0	Oct 19 14:22:11 db-primary WARN replication lag 4200ms
+1	Oct 19 14:23:44 api-7f4 ERROR 502 from payments-svc, 118 requests affected
+0	Oct 19 14:24:02 worker-2 INFO job 8831 completed
+1	Oct 19 15:02:17 api-7f4 ERROR login page returns 500 for all users
+0	Oct 19 15:05:40 worker-2 DEBUG cache warmed in 212ms
+1	Oct 19 15:11:09 edge-1 ERROR TLS certificate expired for app.example.com
+0	Oct 19 15:12:30 db-primary INFO vacuum finished on table events
+0	Oct 19 15:20:55 api-7f4 WARN slow query 1.2s on /v1/reports

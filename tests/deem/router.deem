@@ -1,0 +1,14 @@
+# Route a support ticket. Each branch asks its own questions, so a ticket
+# costs one wave for its kind and at most one more for the branch.
+def yes($q): ask($q; .body) > 0.5;
+
+choose("what kind of ticket is this?"; ["billing", "bug", "question", "spam"]; .body) as $kind
+| if $kind == "spam" then empty
+  elif $kind == "billing" then
+    {id, route: (if yes("is the customer asking for a refund?") then "refunds" else "billing" end)}
+  elif $kind == "bug" then
+    # both follow-ups are independent: they go out together
+    {id, route: "bugs-\(choose("which platform?"; ["android", "ios", "web"]; .body))",
+     urgent: yes("does it stop the user completely?")}
+  else {id, route: "faq"}
+  end

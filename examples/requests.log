@@ -1,0 +1,14 @@
+12:00:01 req=a1 GET /checkout
+12:00:01 req=b7 GET /search?q=shoes
+12:00:02 req=a1 ERROR payments-svc timeout after 5s
+12:00:02 req=c3 POST /login
+12:00:02 req=b7 200 in 80ms
+12:00:03 req=a1 retrying payments-svc (attempt 2)
+12:00:03 req=c3 ERROR ldap connection reset
+12:00:04 req=a1 200 in 3100ms
+12:00:04 req=c3 retrying ldap (attempt 2)
+12:00:05 req=c3 ERROR ldap connection reset
+12:00:05 req=c3 500 in 3000ms
+12:00:06 req=d9 GET /cart
+12:00:06 req=d9 WARN cache miss for cart:991
+12:00:06 req=d9 200 in 45ms

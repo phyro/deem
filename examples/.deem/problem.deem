@@ -1,0 +1,3 @@
+module {input: "each", defaults: {threshold: 0.7}};
+# problem: messages that report a problem (threshold from deem tune)
+def main: select(ask("is the user reporting a problem?"; .) > $threshold);

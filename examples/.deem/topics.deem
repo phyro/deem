@@ -1,0 +1,13 @@
+module {input: "all"};
+# topics: how many tickets are about each topic
+#
+#   deem run topics tickets.txt
+#
+# input "all": `.` is every line, so main runs once and can count. Its
+# questions are built for every ticket before any answer is needed, so
+# they go out together, in one wave.
+
+def main:
+  [.[] | choose("what is this ticket about?";
+                ["bug", "billing", "refund", "other"]; .)]
+  | group_by(.) | map({(.[0]): length}) | add;

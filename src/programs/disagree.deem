@@ -1,0 +1,11 @@
+module {input: "all", defaults: {threshold: 0.5}};
+# disagree: lines where two wordings of a question decide differently
+
+def show: if type == "string" then . else tojson end;
+
+def main($q1; $q2):
+  def yes: . > $threshold;
+  [.[] | {line: ., scores: [ask($q1; .), ask($q2; .)]}]
+  | map(select((.scores[0] | yes) != (.scores[1] | yes)))
+  | sort_by(.scores | max - min) | reverse | .[]
+  | "\(.scores[0])\t\(.scores[1])\t\(.line | show)";

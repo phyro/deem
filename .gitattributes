@@ -1,0 +1,2 @@
+# deem programs are jq plus ask/choose/judge; highlight them as jq
+*.deem linguist-language=jq

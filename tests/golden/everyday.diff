@@ -1,0 +1,16 @@
+# everyday.tsv programs (by line) where deem and jq 1.7.1 differ, and why.
+9	setting a path under a missing parent is an error in jaq; jq creates the parent
+15	del of several paths deletes them one at a time in jaq, so later indexes shift
+19	from_entries takes only key/k in jaq; jq also takes name, Name, K, Key
+33	setting an index past the end is an error in jaq; jq pads with nulls
+42	join prints null as "null" in jaq; jq as ""
+68	a number literal prints as written in jaq; jq 1.7 prints 1.0e3 as 1.0E+3
+69	division by zero is Infinity in jaq; jq raises an error
+70	NaN prints as NaN in jaq (not JSON); jq prints null
+72	a string times 0 is null in jaq; jq 1.7.1 gives ""
+74	jaq allows any value as an object key, printed as-is (not JSON); jq raises an error
+90	$__loc__ is not defined in jaq
+92	a division, or arithmetic with a decimal, is a float in jaq and prints with a point: 4 / 2 is 2.0; jq prints 2
+93	with `?`, setting a path under a missing parent silently sets the parent to null and nothing else; jq creates the parent
+94	setting a path under a missing parent is an error, so `try` catches it; jq creates the parent
+95	setting an array element under a missing parent is an error in jaq; jq creates the array

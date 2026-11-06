@@ -1,0 +1,18 @@
+module {input: "each", defaults: {threshold: 0.5}};
+# same-page: the screenshots that still look like a known-good one
+#
+#   deem run --img baseline screens/orders.png same-page screens/orders*.png
+#
+# A visual check after a deploy: `.` is each new screenshot, and
+# `--img baseline FILE` makes $baseline a screenshot of the same page from
+# when it looked right. Only the screenshots that still look like it print.
+# The orders page with its stylesheet missing has the same text, and isn't
+# the same page to a user, so the question asks how it looks, not what it
+# says. Both pictures go in one value, and the question names each part in
+# backticks, as the API's docs recommend. Each screenshot is a request with
+# both pictures in it, and every screenshot's request goes out in the same
+# wave.
+
+def main:
+  "does `screen` look like `baseline`, with the same layout and styling?" as $q
+  | select(ask($q; {screen: ., baseline: $baseline}) > $threshold);

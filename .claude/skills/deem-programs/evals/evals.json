@@ -1,0 +1,63 @@
+{
+  "skill_name": "deem-programs",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I've got examples/app.log (a normal app log, lines like 'Oct 19 14:22:01 api-7f4 ERROR upstream timeout after 30s'). With deem I want just the ERROR lines that a customer would actually notice, and for each one which service it came from (api, db, worker or edge), as JSON I can pipe into jq later. Give me the command.",
+      "expected_output": "A deem command that filters ERROR lines cheaply first, asks a notice question, labels the service with choose(...; [...]), outputs JSON objects; explanation of waves/cost.",
+      "files": [
+        "examples/app.log"
+      ],
+      "assertions": [
+        "the program compiles in deem",
+        "no numbers without a leading digit (.5)",
+        "a cheap text filter comes before the first ask",
+        "choose uses ';' between its arguments",
+        "outputs JSON objects",
+        "explains the cost in waves, round trips or requests"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "each line of tickets.jsonl is a ticket like {\"id\":\"T-1\",\"messages\":[\"hi\",\"this is the third time I'm asking!!\",...]}. i want to use deem to keep, for every ticket, only the messages that sound angry. output should still be one ticket per line with the messages array filtered. how do i write that",
+      "expected_output": "A deem program over .messages that asks about every message before comparing (map(ask) then select), keeps one ticket per line, explains why the naive map(select(ask > t)) costs a round trip per message.",
+      "files": [],
+      "assertions": [
+        "the program compiles in deem",
+        "no numbers without a leading digit (.5)",
+        "no map(select(ask ...)): no round trip per message",
+        "asks about every message before comparing",
+        "keeps one ticket per line with .messages replaced",
+        "passes -J, since the input is JSON",
+        "explains why comparing per element costs round trips"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "running `deem run 'try ask(\"is this email spam?\"; .) catch 0' emails.txt` still prints errors like 'deem: record 12: the answer to \"is this email spam?\" failed: api 500 ...' and those lines are missing from the output. I thought try/catch would give me 0 for them?? how do I get 0 for the failed ones",
+      "expected_output": "Explains that a failed answer fails its whole record and that no try, ? or // can catch it; suggests --failed FILE to collect those records, then rerunning that file later or giving them a default (0) in a second step with ordinary tools.",
+      "files": [],
+      "assertions": [
+        "does not claim that try, ? or // can catch a failed answer",
+        "explains that a failed answer fails the whole record",
+        "suggests --failed FILE to collect the records that didn't finish",
+        "gives a second step that reruns them or gives them a default of 0",
+        "any deem program it gives compiles, and passes the context: ask(q; .), not ask(q)"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "after every deploy our CI saves screenshots of the main pages to shots/*.png. I want deem to tell me which ones show an error message and where on the screen it is, so I can crop it into the CI report. what's the command?",
+      "expected_output": "A deem run program over the picture files that asks whether an error message is shown and boxes it in the same program (one request a picture), keeps only the screenshots that show one, prints each screenshot's path with its box, and says box needs Jev 1.14 (jev-preview if the model refuses it) and answers in fractions of the height and width.",
+      "files": [],
+      "assertions": [
+        "the program compiles in deem",
+        "it reads the pictures as files (shots/*.png or -I), without -J",
+        "it asks whether there is an error, not only box(...), since a box always comes back",
+        "the ask and the box are about the same picture in one program, so they share a request",
+        "says box needs Jev 1.14, with jev-preview for a model that refuses it",
+        "explains that the box is fractions of the picture's height and width"
+      ]
+    }
+  ]
+}

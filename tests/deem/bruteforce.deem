@@ -1,0 +1,12 @@
+# Run with -s: the whole log is one record. Group lines by source IP and
+# ask once per IP, with only that IP's lines as context.
+[ split("\n")[]
+  | select(length > 0)
+  | {ip: (capture("from (?<ip>[0-9.]+)").ip // "none"), line: .} ]
+| group_by(.ip)
+| map({ip: .[0].ip, lines: map(.line)})
+| map(select(.ip != "none"))
+# ask for every IP first, compare after: `> 0.5` inside the same map would
+# wait for each answer before asking the next IP (a wave each)
+| map(.p = ask("do these lines show a password-guessing attack?"; .lines))
+| map(select(.p > 0.5) | .ip)

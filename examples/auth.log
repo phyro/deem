@@ -1,0 +1,9 @@
+Oct 19 03:11:02 host sshd[221]: Failed password for root from 203.0.113.9 port 41122 ssh2
+Oct 19 03:11:03 host sshd[222]: Failed password for admin from 203.0.113.9 port 41124 ssh2
+Oct 19 03:11:04 host sshd[223]: Failed password for oracle from 203.0.113.9 port 41126 ssh2
+Oct 19 03:11:05 host sshd[224]: Failed password for postgres from 203.0.113.9 port 41128 ssh2
+Oct 19 03:11:06 host sshd[225]: Failed password for jenkins from 203.0.113.9 port 41130 ssh2
+Oct 19 03:11:07 host sshd[226]: Failed password for root from 203.0.113.9 port 41132 ssh2
+Oct 19 09:02:11 host sshd[900]: Accepted publickey for deploy from 10.0.0.4 port 5122 ssh2
+Oct 19 09:14:56 host sudo[931]: deploy : TTY=pts/0 ; PWD=/srv ; USER=root ; COMMAND=/bin/systemctl restart api
+Oct 19 11:40:02 host sshd[1204]: Connection closed by 198.51.100.7 port 33344 [preauth]

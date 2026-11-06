@@ -1,0 +1,18 @@
+module {input: "each"};
+# ticket-kinds: classify each ticket, then ask the follow-up that fits
+#
+#   deem run -J ticket-kinds tickets.jsonl
+#
+# A bug is asked whether it blocks the user, billing whether they want their
+# money back; the second question waits for the first answer.
+
+def main:
+  def yes($q): ask($q; .body) > 0.5;
+  choose("what kind of ticket is this?"; ["bug", "billing", "question"]; .body)
+    as $kind
+  | {id, customer, kind: $kind}
+    + if $kind == "bug" then
+        {blocking: yes("does this stop the user from working?")}
+      elif $kind == "billing" then
+        {refund: yes("is the customer asking for money back?")}
+      else {} end;

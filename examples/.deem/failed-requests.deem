@@ -1,0 +1,17 @@
+module {input: "each"};
+# failed-requests: which requests ended in an error the user saw
+#
+#   deem run -s failed-requests requests.log
+#
+# Log lines from concurrent requests are interleaved: with -s the whole log
+# is one record, grouped here by request id, and each request is asked about
+# with only its own lines. Every request is asked before any answer is
+# compared: one wave for all of them.
+
+def main:
+  split("\n")
+  | map(select(length > 0) | {id: capture("req=(?<id>\\w+)").id, line: .})
+  | group_by(.id)
+  | map({id: .[0].id, lines: map(.line)})
+  | map(.failed = ask("did this request end in an error the user saw?"; .lines))
+  | .[] | select(.failed > 0.5) | .id;

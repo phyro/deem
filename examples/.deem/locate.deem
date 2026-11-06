@@ -1,0 +1,15 @@
+module {input: "each", defaults: {threshold: 0.5}};
+# locate: where a thing is, in the pictures that show it
+#
+#   deem run locate "the Pay button" screens/*.png
+#
+# box needs Jev 1.14 (jev-preview, if your model refuses it). It always
+# answers with a box, even for a thing that isn't there, so the program
+# asks whether the thing is there too, and keeps the pictures where it is.
+# Both questions are about the same picture, so they go in one request: one
+# request a picture, all in one wave. `at` is fractions of the picture's
+# height (top, bottom) and width (left, right) from its top left corner.
+
+def main($thing):
+  {picture: ., seen: ask("is there \($thing)?"; .), at: box($thing; .)}
+  | select(.seen > $threshold);

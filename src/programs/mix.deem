@@ -1,0 +1,30 @@
+module {input: "all"};
+# mix: how the options are spread, and which ones the model confuses
+#
+# Every line and the baseline (an empty line) are asked together: one wave.
+# A close call is a line whose winner is less than 0.15 ahead of the next.
+# After the options come the pairs with close calls, if there are any, and
+# the baseline, each part behind a line of dashes.
+
+def bar($n): if . == 0 then "" else "█" * ([. / $n * 40 | round, 1] | max) end;
+def r2: . * 100 | round / 100;
+
+def main($q; $opts):
+  def ranked: to_entries | sort_by(-.value);
+  ($opts | split(",") | map(trim)) as $o
+  | ($o | to_entries | map({(.value): .key}) | add) as $pos
+  | [.[] | judge({q: $q, among: $o}; .)] as $a
+  | judge({q: $q, among: $o}; "") as $base
+  | ($a | length) as $n
+  | ($o[] as $opt | [$a[] | select(.value == $opt)] | length
+      | "\($opt)\t\(.)\t\(bar($n))"),
+    ([$a[] | .probabilities // {} | ranked
+      | select(length > 1 and .[0].value - .[1].value < 0.15)
+      | [.[0].key, .[1].key] | sort_by($pos[.]) | join("/")]
+      | group_by(.) | map({pair: .[0], n: length}) | sort_by(-.n)
+      | select(length > 0)
+      | "-" * 20, (.[] | "close \(.pair)\t\(.n)\t\(.n | bar($n))")),
+    "-" * 20,
+    ($base.probabilities
+      | if . then ranked | .[] | "baseline \(.key)\t\(.value | r2)"
+        else "baseline \($base.value)" end);

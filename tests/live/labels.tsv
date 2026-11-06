@@ -1,0 +1,156 @@
+# Support messages, for tests/live/versus.rs. Labels drafted by Claude on 2026-09-29
+# and to be reviewed by a person: a wrong label here misjudges every shape alike.
+# Columns: problem (is the user reporting a problem?), billing (is this about billing?),
+# urgent (is this urgent?), topic (bug, billing, account, question, feature, praise), message.
+# 1 yes, 0 no, - a judgement call, left out of that question's score.
+problem	billing	urgent	topic	message
+1	0	1	bug	production is down for all our users since 10:02, nothing loads
+1	-	1	-	we can't take payments, every checkout returns an error
+1	0	1	account	someone logged into my account from a country I've never been to
+1	0	1	account	our API key was posted in a public repo by mistake, how do I revoke it fast
+1	0	1	-	the whole team got logged out and nobody can get back in
+1	0	1	bug	data from yesterday afternoon is missing from every report
+1	1	-	billing	I was charged three times this morning for one subscription
+1	-	1	-	the site shows another company's invoices when I open billing
+1	0	1	bug	webhooks stopped firing about an hour ago and our orders are piling up
+1	0	-	bug	the mobile app crashes on launch after today's update
+1	0	1	bug	we have a board demo in 30 minutes and the dashboard won't load
+1	0	1	-	our SSO login returns a 403 for everyone in the company
+1	0	1	bug	the export deleted rows from the source table instead of copying them
+1	0	1	account	I think my password was changed without me doing anything
+1	0	1	bug	all emails to our customers are bouncing since the DNS change you asked for
+1	1	-	billing	the invoice total is double what the plan page says
+1	1	-	billing	my card was declined but the payment still went through twice
+1	0	-	bug	the search returns nothing, even for exact titles
+1	0	0	bug	uploads over 10 MB fail with a timeout
+1	0	0	bug	the calendar shows every meeting one hour off since the clock change
+1	0	0	bug	notifications arrive about 20 minutes late
+-	0	0	-	the chart colours are hard to tell apart for colour-blind users
+0	0	0	feature	the date picker starts weeks on Sunday, we'd like Monday
+1	0	0	bug	sometimes the page flickers when I scroll quickly
+1	0	0	bug	the CSV export puts quotes around every number
+1	0	0	bug	the dark theme makes links almost invisible
+1	0	0	bug	the tooltip covers the button I'm trying to press
+1	0	0	bug	the app is a bit sluggish on my old tablet
+1	0	0	bug	the sidebar forgets that I collapsed it
+1	0	0	bug	emoji in task titles show up as question marks
+1	0	0	bug	when I paste from Word the formatting goes strange
+1	0	0	bug	the zoom on the map resets after each filter change
+1	0	0	-	two-factor codes sometimes take a minute to arrive
+1	0	0	bug	my profile picture looks blurry
+1	0	0	bug	the weekly summary email came on Tuesday instead of Monday
+1	0	0	bug	the progress bar jumps back to zero halfway through an import
+1	0	0	-	the help centre article about API limits is out of date
+-	0	0	-	the undo button only goes back one step
+1	0	0	bug	typing in the comment box lags when the thread is long
+1	0	0	bug	the print view cuts off the right column
+0	0	0	-	how do I add a second admin to our workspace?
+0	1	0	-	can I change the currency on my account from USD to EUR?
+0	0	0	question	is there a way to export all my data at once?
+0	1	0	-	where do I find my VAT number on the invoice?
+0	1	0	-	do you offer a discount for non-profits?
+0	0	0	question	can I move a project from one workspace to another?
+0	-	0	-	what's the difference between the Team and Business plans?
+0	0	0	question	how long do you keep deleted files?
+0	0	0	question	does the API support pagination with cursors?
+0	0	0	question	can I schedule a report to be emailed every Friday?
+0	-	0	question	is there a limit on how many users I can invite?
+0	0	0	question	how do I turn off the weekly digest?
+0	0	0	question	can guests comment without creating an account?
+0	0	0	question	which regions do you store data in?
+0	0	0	question	how do I connect my Google calendar?
+0	0	0	question	is there a desktop app for Linux?
+0	1	0	-	can I pay by bank transfer instead of card?
+0	-	0	question	what happens to my data if I cancel?
+0	0	0	-	how do I reset my API key?
+0	1	0	-	can I get an invoice with my company address on it?
+0	1	0	billing	please cancel my subscription at the end of this month
+0	1	0	billing	I'd like a refund for the annual plan, we switched tools last week
+-	1	0	billing	why did my bill go up this month? nothing changed on our side
+1	1	-	billing	we were charged for 15 seats but only have 9 people
+0	1	0	billing	can you send the invoice for March again? I can't find it
+1	1	0	billing	our payment failed but the card works everywhere else
+0	1	0	billing	please update the billing email to finance@ourcompany.example
+1	1	0	billing	the discount code from your newsletter doesn't apply at checkout
+1	1	0	billing	I was promised a 20% discount on renewal and didn't get it
+1	1	0	billing	the receipt is missing our tax ID, our accountant needs it
+0	0	0	feature	feature request: dark mode for the mobile app
+0	0	0	feature	it would be great to filter tasks by more than one tag
+0	0	0	feature	please add keyboard shortcuts for moving between boards
+0	0	0	feature	could you support Markdown tables in comments?
+0	0	0	feature	we'd love an integration with Jira
+0	0	0	feature	an option to hide completed items would help a lot
+0	0	0	feature	can you add a way to duplicate a whole project?
+0	0	0	feature	would be nice to set a default view per team
+0	0	0	feature	please let us bulk edit due dates
+0	0	0	feature	a read-only share link for clients would be perfect
+0	0	0	praise	thank you, the new editor is so much faster
+0	0	0	praise	your support team fixed our issue in ten minutes, amazing
+0	0	0	praise	loving the new reports, our managers use them daily
+0	0	0	praise	the onboarding was really clear, well done
+0	0	0	praise	just wanted to say the app has been rock solid for us
+0	0	0	praise	great update, the search is finally fast
+0	0	0	praise	thanks for adding the Slack integration, exactly what we needed
+0	0	0	praise	we've recommended you to three other teams already
+0	-	0	praise	the new pricing page is much easier to understand
+0	0	0	praise	nice work on the mobile redesign
+0	0	0	-	the new layout is fine I guess, took some getting used to
+-	0	0	-	honestly not sure the update was an improvement
+0	0	0	-	I preferred the old icons but it's not a big deal
+-	0	0	-	the app works but it feels slower than last year
+-	1	0	-	we're considering switching tools, the price keeps going up
+-	-	0	-	your competitor offers this feature for free
+1	0	-	-	I've asked about this twice already and heard nothing back
+1	0	-	-	still waiting for an answer to my ticket from last week
+1	0	-	bug	this is the third time the sync has broken this month
+1	0	-	-	if this isn't fixed by Friday we'll have to cancel
+1	0	0	-	login works on my laptop but not on my phone
+1	0	0	bug	the report numbers don't match what I see in the dashboard
+1	0	-	bug	some of my tasks disappeared, I'm not sure if I deleted them
+1	0	0	-	the app asked me to log in again right after I logged in
+1	0	-	-	my colleague can see my private notes, is that expected?
+-	0	-	account	I got an email saying my account will be closed, is this real?
+-	0	-	account	we received a password reset email that nobody requested
+-	0	0	-	our usage graph shows a spike at 3am that we can't explain
+1	0	0	bug	the import said success but only half the rows are there
+1	0	0	-	one of our users can't open any shared files
+1	0	0	-	the app shows my old email address in some places
+-	0	0	question	I can't find the setting to change the language
+1	0	0	-	the API docs say 100 requests a minute but we get limited at 60
+1	0	-	bug	after upgrading, our custom fields are empty
+1	0	0	bug	the reminder for my 9am meeting came at 9:15
+1	0	1	-	a customer says they got someone else's order confirmation
+1	0	-	-	our audit log has a gap between 2 and 4 am last night
+1	0	1	bug	the status page says everything is fine but nothing loads for us
+1	0	0	bug	we lost about an hour of work when the editor froze
+1	-	0	-	the trial ended early, we still had 5 days left
+1	1	0	billing	my invoice is in a currency we never chose
+1	0	0	-	the app keeps asking for camera permission it doesn't need
+-	0	-	-	we see requests in our logs from an IP we don't recognise
+1	0	-	bug	the backup from Sunday seems to be incomplete
+1	-	-	-	the admin panel lets any member change billing details
+-	0	-	-	I accidentally deleted a project, can it be restored?
+1	1	0	billing	the new tax rate wasn't applied to our last invoice
+0	0	-	account	a user left the company, how do I remove their access quickly?
+0	0	0	account	we need to change the owner of our account, the old owner left
+1	0	1	-	the SSL certificate on our custom domain expired this morning
+1	0	-	bug	customers report the booking page shows the wrong time zone
+1	0	1	bug	our team of 40 can't share files since this morning
+1	-	0	-	the free plan limit message appears even though we pay
+1	0	-	bug	exports are stuck in the queue for hours
+1	0	-	bug	when two people edit the same doc, one person's changes vanish
+1	0	-	account	my phone number for 2FA changed and now I'm locked out
+1	0	0	bug	the unsubscribe link in your emails doesn't work
+1	1	0	billing	we got an invoice for a plan we downgraded from last month
+1	0	-	bug	all the links in our shared workspace point to the wrong server
+1	0	0	bug	the Android widget shows yesterday's data
+1	0	0	bug	the app logged me out while I was typing a long message
+0	0	0	-	hi, just checking if you received my email from Monday
+0	-	0	-	can someone call me back about our contract?
+0	0	0	question	where is the button to archive old boards?
+1	0	1	-	our intern accidentally made a public link to our roadmap, how do we undo that
+1	0	0	bug	the text in the PDF export is tiny
+0	-	0	-	we'd like to talk to someone about an enterprise plan
+1	0	0	bug	the speed is okay but the app uses a lot of battery
+-	-	0	-	love the product, but the price increase is hard for a small team
+1	0	0	bug	the integration with Outlook duplicates every event

@@ -1,0 +1,78 @@
+# What every change must pass, as `just ci` runs it locally. The live tests
+# (tests/live/) never run here: they need DEEM_LIVE=1 and a key, and this
+# workflow has neither. No other test can reach the hosted API (tests/common,
+# `OFFLINE`), and here its name resolves to this machine besides.
+name: ci
+
+on:
+  push:
+  pull_request:
+  # Weekly, so a new advisory against a locked crate shows up unprompted.
+  schedule:
+    - cron: '0 6 * * 1'
+
+# The jobs only read the repository.
+permissions:
+  contents: read
+
+jobs:
+  # On Linux and on macOS, which shares the Unix code (key file modes,
+  # private folders) but not Linux's.
+  ci:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
+      - uses: dtolnay/rust-toolchain@b725eda525362e7cf34af9a7243cac1e3f01a7ec # stable
+        with:
+          components: clippy, rustfmt
+      - uses: Swatinem/rust-cache@d1527c8f67ef9af357290475d4af4b0fab8f12e0 # v2.9.3
+      - name: Put the hosted API out of reach
+        if: runner.os == 'Linux'
+        run: |
+          printf '127.0.0.1 api.typesafe.ai\n::1 api.typesafe.ai\n' | sudo tee -a /etc/hosts
+          if getent ahosts api.typesafe.ai | grep -v -e '^127\.0\.0\.1 ' -e '^::1 '; then
+            echo "api.typesafe.ai still resolves to another machine"; exit 1
+          fi
+      - name: Put the hosted API out of reach (macOS)
+        if: runner.os == 'macOS'
+        run: |
+          printf '127.0.0.1 api.typesafe.ai\n::1 api.typesafe.ai\n' | sudo tee -a /etc/hosts
+          sudo dscacheutil -flushcache
+          sudo killall -HUP mDNSResponder
+          found=$(dscacheutil -q host -a name api.typesafe.ai | awk '/address:/ {print $2}')
+          echo "$found"
+          if [ -z "$found" ] || echo "$found" | grep -v -x -e '127.0.0.1' -e '::1'; then
+            echo "api.typesafe.ai still resolves to another machine"; exit 1
+          fi
+      - run: cargo test --locked --no-fail-fast
+      - run: cargo clippy --locked --all-targets -- -D warnings
+      - run: cargo fmt --check
+      - run: cargo doc --locked --no-deps --quiet
+        env:
+          RUSTDOCFLAGS: -D warnings
+
+  # The oldest Rust the README says builds deem: Cargo.toml's rust-version.
+  msrv:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
+      - uses: dtolnay/rust-toolchain@b725eda525362e7cf34af9a7243cac1e3f01a7ec # stable
+        with:
+          toolchain: '1.89'
+      - run: cargo check --locked --all-targets
+
+  # Cargo.lock against the RustSec advisory database.
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
+      - uses: dtolnay/rust-toolchain@b725eda525362e7cf34af9a7243cac1e3f01a7ec # stable
+      - run: cargo install cargo-audit --locked
+      - run: cargo audit

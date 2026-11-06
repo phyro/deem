@@ -1,0 +1,13 @@
+module {input: "each"};
+# labels: three labels per ticket, asked together
+#
+#   deem run -J labels tickets.jsonl
+#
+# Each ticket's text is sent once, with all three questions attached.
+
+def main:
+  {id, customer,
+   area: choose("which part of the product is this about?";
+                ["billing", "app", "account", "other"]; .body),
+   angry: ask("is the customer angry?"; .body),
+   churn: ask("is the customer likely to cancel?"; .body)};

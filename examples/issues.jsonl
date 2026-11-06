@@ -1,0 +1,5 @@
+{"number":412,"title":"Dark mode colors","labels":["enhancement"],"body":"Would be nice to have a darker sidebar.\n\nAlso the accent could be softer."}
+{"number":413,"title":"Export is slow","labels":["question"],"body":"Exporting 10k rows takes forever.\n\nSteps:\n1. open reports\n2. click export\n3. it hangs, then the tab crashes with 'Aw, Snap'"}
+{"number":414,"title":"Crash on login with SSO","labels":["bug"],"body":"Stack trace:\n  at auth.ts:88\n  TypeError: cannot read properties of undefined"}
+{"number":415,"title":"How do I set a default workspace?","labels":["question"],"body":"I couldn't find it in settings.\nIs there a config option?"}
+{"number":416,"title":"Docs typo","labels":["docs"],"body":"The README says `--ouput`.\n\nAlso when I follow the install steps, `make` fails with:\n  error: undefined reference to `ssl_init`"}

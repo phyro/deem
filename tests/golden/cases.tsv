@@ -1,0 +1,17 @@
+tsv48	tests/golden/records48.txt	[ask("q"; .), .] | @tsv
+filter	examples/app.log	select(ask("is this an error?"; .) > 0.8)
+score	examples/app.log	[ask("is this an error?"; .), .] | @tsv
+field	examples/tickets.jsonl	ask("is this about billing?"; .body)
+label	examples/app.log	{text: ., svc: choose("which service?"; ["api","db","worker"]; .)}
+cheap	examples/app.log	select(test("ERROR")) | select(ask("would a user notice?"; .) > 0.5)
+and	examples/app.log	select(ask("is this an error?"; .) > 0.5 and (test("api") | not))
+shorthand	examples/app.log	select(ask("would a user actually notice this?"; .) > 0.55)
+sort	examples/app.log	[ask("would a user notice this?"; .), .] | @tsv
+label2	examples/app.log	{text: ., notice: ask("would a user notice?"; .), service: choose("which service?"; ["api","db","worker"]; .)}
+triage	examples/app.log	@examples/.deem/triage.deem
+as_written	tests/golden/as_written.jsonl	{id, a: ask("q"; .), b: ask("q"; {price, id}), c: ask("q"; .items), d: ask("q"; .price * 3)}
+or	examples/tickets.txt	select(ask("is this urgent?"; .) > 0.8 or ask("is the sender a paying customer?"; .) > 0.8)
+compare	examples/tickets.txt	select(ask("is this a bug report?"; .) > ask("is this a feature request?"; .))
+next	examples/tickets.txt	choose("topic?"; ["bug", "billing", "other"]; .) as $topic | if $topic == "bug" then select(ask("is it blocking the user?"; .) > 0.8) elif $topic == "billing" then select(ask("is the user asking for a refund?"; .) > 0.8) else empty end
+json_filter	examples/tickets.jsonl	select(ask("is this urgent?"; .body) > 0.8)
+json_field	examples/tickets.jsonl	.topic = choose("topic?"; ["billing", "bug", "other"]; .body)

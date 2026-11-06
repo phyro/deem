@@ -1,0 +1,32 @@
+module {input: "each"};
+# screen-check: what each screenshot shows, and where its error is
+#
+#   deem run screen-check screens/*.png
+#
+# A check after a deploy, or in CI: is each page loaded, showing an error,
+# broken or still loading? Each option is described, so the model knows
+# what counts: a page that mentions errors ("Error rate 0.02%") isn't one
+# that shows one, and an unstyled page, which passes for loaded with a
+# vaguer description of broken, is broken.
+# Only a page that shows an error is asked where, so that question waits
+# for the first answer: a second wave, for the errors alone. `error` is
+# fractions of the picture's height (top, bottom) and width (left, right).
+# box needs Jev 1.14 (jev-preview, if your model refuses it).
+
+def states: {
+  loaded: ("the page shows its content, and nothing on it says that "
+    + "something went wrong"),
+  error: "the page shows an error message: something the user did failed",
+  broken: ("the page didn't render properly: no styling (default fonts, "
+    + "blue underlined links, no layout), or content overlapping or cut off"),
+  loading: "the page has no content yet: blank, a spinner or a placeholder"
+};
+
+def main:
+  . as $screen
+  | choose("what does this screenshot of a web page show?"; states; $screen)
+    as $state
+  | {screen: $screen, state: $state}
+    + if $state == "error"
+      then {error: box("the error message"; $screen)}
+      else {} end;

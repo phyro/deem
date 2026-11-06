@@ -1,0 +1,34 @@
+module {input: "each"};
+# decision-tree: route each line down a decision tree, one wave per level
+#
+#   deem run decision-tree alerts.log
+#
+#                          ┌───────────────────┐
+#                          │ is this an error? │
+#                          └─────────┬─────────┘
+#                    ┌───── yes ─────┴────── no ──────┐
+#        ┌───────────┴───────────┐          ┌─────────┴────────┐
+#        │ is it about security? │          │ is it a warning? │
+#        └───────────┬───────────┘          └─────────┬────────┘
+#           ┌── yes ─┴── no ──┐               ┌─ yes ─┴── no ─┐
+#           ▼                 ▼               ▼               ▼
+#     page-security      page-oncall       ticket          ignore
+#
+# The tree is data: a leaf is a string, the action to take; a node asks its
+# question `q` and follows `yes` or `no`. The lines running together are at
+# the same level at the same time, so they take one wave per level, not one
+# per line: up to 192 lines run together, and a longer input goes through
+# the tree that many at a time.
+
+def tree:
+  { q: "is this an error?",
+    yes: {q: "is it about security?", yes: "page-security", no: "page-oncall"},
+    no:  {q: "is it a warning?",      yes: "ticket",        no: "ignore"} };
+
+def decide($line):
+  if type == "string" then .
+  elif ask(.q; $line) > 0.5 then .yes | decide($line)
+  else .no | decide($line)
+  end;
+
+def main: . as $line | {line: $line, action: (tree | decide($line))};

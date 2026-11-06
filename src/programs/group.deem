@@ -1,0 +1,24 @@
+module {input: "all", defaults: {threshold: 0.5, groups: 20}};
+# group: lines that mean the same, numbered together; a request per line per group
+#
+# Each round, the earliest line left is compared with every other line left,
+# all at once: one wave per group. Groups print in the order of their first
+# line, and the lines in a group in input order. After `groups` groups (0:
+# no limit), the lines left print under `-`, so a run asks at most a
+# request per line per group allowed.
+
+def show: if type == "string" then . else tojson end;
+
+def main($q):
+  def rounds($g; $rest):
+    if $rest == [] then empty
+    elif $groups > 0 and $g > $groups then $rest[] + {g: "-"}
+    else
+      $rest[0] as $rep | $rest[1:] as $others
+      | [$others[] | ask($q; {a: $rep.line, b: .line})] as $s
+      | [range($s | length) | select($s[.] > $threshold)] as $same
+      | ($rep, $others[$same[]]) + {g: $g},
+        rounds($g + 1; [$others[[range($s | length)] - $same | .[]]])
+    end;
+  [.[] | {line: .}]
+  | rounds(1; .) | "\(.g)\t\(.line | show)";

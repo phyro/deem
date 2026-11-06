@@ -1,0 +1,24 @@
+module {input: "each"};
+# hello-world: say hello to every line, and ask whether it is friendly
+#
+#   deem run hello-world feedback.txt
+#
+# input "each": main runs once per line, all lines in parallel, and `.` is the
+# line. Its questions go out together with the other lines', in one wave.
+#
+# input "all" would run main once, with `.` an array of every line, so the
+# program could sum them up instead of greeting each one:
+#
+#   module {input: "all", defaults: {threshold: 0.5}};
+#   def main:
+#     [.[] | ask("is this message friendly?"; .)]
+#     | "hello, world: \(map(select(. > $threshold)) | length) of \(length)"
+#       + " lines are friendly";
+#
+# `defaults` declares $threshold, 0.5 unless `-t` (or `--arg threshold`)
+# sets it. Build the array of asks first, then compare:
+# `.[] | select(ask(…) > …)` would wait for each line's answer before asking
+# about the next.
+
+def main:
+  "hello, \(.)! friendly: \(ask("is this message friendly?"; .))";

@@ -1,0 +1,11 @@
+module {input: "each", defaults: {urgent: 0.8, about: 0.6}};
+# route: urgent tickets about a topic
+#
+#   deem run route billing tickets.txt --arg urgent 0.9
+#
+# The topic is an argument, so it is required; the thresholds are named
+# values, so they have defaults.
+
+def main($topic):
+  select(ask("is this urgent?"; .) > $urgent
+     and ask("is this about \($topic)?"; .) > $about);

@@ -1,0 +1,13 @@
+# Score feedback on a weighted rubric; all criteria are asked at once.
+# Only what scores well gets a second question: which team owns it.
+def criteria: [
+  {q: "is it actionable?", w: 3},
+  {q: "is it specific?", w: 2},
+  {q: "is it about the product?", w: 1}
+];
+
+. as $text
+| (criteria | map(.w) | add) as $total
+| (reduce criteria[] as $c (0; . + $c.w * ask($c.q; $text)) / $total * 100 | round) as $score
+| {text: $text, score: $score}
+| if $score >= 50 then .team = choose("which team owns this?"; ["web", "mobile", "payments"]; $text) else . end

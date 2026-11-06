@@ -1,0 +1,21 @@
+module {input: "all", defaults: {threshold: 0.5}};
+# histogram: how the scores are spread, instead of the lines
+#
+# Every line's score and the baseline (an empty line) are asked together:
+# one wave. A bar has one block per 2.5% of the lines. After the ten bins
+# and a line of dashes come the lines above the threshold, and the baseline.
+
+def bar($n): if . == 0 then "" else "█" * ([. / $n * 40 | round, 1] | max) end;
+def r2: . * 100 | round / 100;
+
+def main($q):
+  [.[] | ask($q; .)] as $s
+  | ask($q; "") as $base
+  | ($s | length) as $n
+  | (range(10) as $b
+      | [$s[] | select([. * 10 | floor, 9] | min == $b)] | length
+      | "0.\($b)\t\(.)\t\(bar($n))"),
+    "-" * 20,
+    ([$s[] | select(. > $threshold)] | length
+      | "above \($threshold)\t\(.)\t\(bar($n))"),
+    "baseline\t\($base | r2)";

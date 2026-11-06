@@ -1,0 +1,15 @@
+module {input: "each"};
+# moderation: per thread, who wrote comments that cross the line
+#
+#   deem run -J moderation threads.jsonl
+#
+# Every comment is asked about first, and compared after: a
+# `select(ask(…) > 0.7)` inside `.comments[]` would wait for each answer before
+# asking the next, a wave per comment.
+
+def main:
+  "is this comment abusive toward a person?" as $q
+  | {id, title,
+     flagged: ([.comments[] | {author, p: ask($q; .text)}]
+               | map(select(.p > 0.7) | .author))}
+  | select(.flagged | length > 0);

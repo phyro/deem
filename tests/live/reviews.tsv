@@ -1,0 +1,86 @@
+# App reviews, for tests/live/versus.rs. Written and labelled by Claude on 2026-09-29,
+# to be reviewed by a person. Columns: recommend (does the reviewer recommend it?), bug
+# (does it describe a specific bug?), sarcastic (is the review sarcastic?), about
+# (price, performance, design, support, reliability, features), review. 1 yes, 0 no, - a judgement call.
+recommend	bug	sarcastic	about	review
+1	0	0	features	Five stars. The offline mode alone is worth it, I use it on every flight.
+1	0	0	design	Clean, calm interface. My whole team switched to it within a week.
+0	1	0	reliability	Crashes every time I rotate my phone while a note is open. Unusable on the train.
+0	1	0	reliability	Since the last update, sync deletes the second paragraph of any note I edit on two devices.
+0	0	0	price	Doubled the price with no new features. Cancelled today.
+1	0	0	support	Support answered my question within an hour, on a Sunday. Impressed.
+0	-	1	reliability	Oh great, another update that logs me out. Just what I needed before a meeting.
+0	0	1	price	Love paying $12 a month for a to-do list. Truly the future.
+1	0	0	performance	Opens instantly even with thousands of notes. Much faster than what I used before.
+0	1	0	features	The export to PDF puts every image on its own page and cuts off tables.
+-	0	0	design	It is fine. Does what it says. Nothing special.
+0	0	0	support	Waited nine days for a reply about a double charge. Nobody ever answered.
+0	1	0	features	Search does not find words with accents, so half my Portuguese notes are invisible.
+1	0	0	features	The templates saved me hours setting up our onboarding. Recommended to every manager I know.
+0	0	1	design	Wow, they moved every button again. I so enjoy relearning the app every month.
+1	0	0	price	Fair price for what you get, and the student discount is generous.
+0	1	0	reliability	Widget on Android shows yesterday's tasks until I open the app.
+0	-	0	performance	Painfully slow on my older laptop. Typing lags a full second behind.
+-	1	0	features	Great app, but reminders fire twice on the Apple Watch. Still using it.
+1	0	0	reliability	Two years, never lost a single note. That is all I ask of a notes app.
+0	0	1	support	Support was amazing: they told me to reinstall. Three times. Problem solved, obviously.
+0	0	0	features	Missing basic things like tables and nested lists. Went back to paper.
+1	0	0	design	Dark mode is gorgeous and easy on the eyes at night.
+0	1	0	reliability	Every time I paste a link the app freezes for ten seconds.
+-	0	0	price	Bit expensive, but I keep paying because I am used to it.
+1	0	0	support	Lost access after changing phones; support restored my account the same day.
+0	0	1	performance	Takes only forty seconds to open. Blazing fast, as advertised.
+0	1	0	features	Calendar sync shows every event one hour off since daylight saving ended.
+1	0	0	features	The shared lists make grocery shopping with my partner so much easier.
+0	-	0	reliability	Lost a whole week of journal entries. I will not trust it again.
+0	0	1	features	Finally they added the one feature nobody asked for, while the bugs stay. Bravo.
+1	0	0	performance	Battery use is tiny compared to other apps I tried.
+0	1	0	design	Text is cut off on the settings screen when the font size is set to large.
+-	0	-	design	I guess the new icon is nice. Not sure why they needed it.
+1	0	0	features	Handwriting recognition is shockingly good, even for my terrible scribbles.
+0	0	0	price	Free version is so limited it is basically a trial. No thanks.
+0	1	0	features	Importing from Evernote skips every note that has a checklist.
+1	0	0	support	The help centre articles are clear and actually answer the question.
+0	0	1	reliability	Five stars for creativity: it invents new ways to lose my data every week.
+0	1	0	performance	Uses 2 GB of memory with a single notebook open and my phone kills it in the background.
+1	0	0	design	Simple enough that my 80-year-old dad uses it for his shopping lists.
+0	0	0	support	Chat support is a bot that loops back to the same three articles.
+-	0	0	features	Would be perfect with a proper web version. For now it is okay.
+0	1	0	reliability	Two-factor codes from the app are rejected about half the time.
+0	0	1	price	Sure, charge me for the export of my own data. Very customer friendly.
+1	0	0	reliability	Survived three phone migrations without losing anything. Rock solid.
+0	0	0	design	The new layout wastes half the screen on a giant banner.
+1	0	0	features	Tags and saved filters make it the best tool for research notes I have found.
+0	1	0	features	Voice notes stop recording after exactly 60 seconds with no warning.
+0	0	1	support	Opened a ticket in March. I am sure they will get to it any decade now.
+1	0	0	price	Lifetime licence paid for itself in the first year.
+0	1	0	reliability	App shows a blank white screen after the latest iOS update until reinstalled.
+1	0	0	performance	Scrolling through big boards is smooth even on my old iPad.
+-	0	0	support	Support was polite but could not fix my problem.
+0	0	0	features	They removed the calendar view that was the only reason I used this app.
+1	0	0	design	Every screen feels thought through. Rare these days.
+0	0	1	design	I adore hunting for the save button, it is hidden in a new place every time.
+0	1	0	features	Sharing a note by email sends the recipient a link that says access denied.
+1	0	0	features	Works with my screen reader, which almost no other note app does properly.
+0	0	0	price	Hidden fees for every add-on. The advertised price is fiction.
+-	0	0	performance	Faster than last year, still slower than it should be.
+0	1	0	reliability	Tasks I mark done come back as not done after a sync.
+1	0	0	support	Asked for a refund after a week and got it without any hassle. Will come back.
+0	0	1	performance	My phone doubles as a hand warmer whenever this app is open. Thoughtful.
+1	0	0	features	Recurring tasks finally work the way I think. Great update.
+0	1	0	design	On tablets the keyboard covers the text field and I cannot see what I type.
+0	0	0	reliability	Server down again this morning. Third time this month.
+-	0	0	price	Price went up a little. Still okay for now.
+1	0	0	design	Beautiful typography, makes me want to write.
+0	0	1	features	Can't wait for them to add a feature that lets me open my notes. Oh wait.
+0	1	0	features	Printing a checklist prints the unchecked boxes as black squares.
+1	0	0	reliability	Never crashed once in daily use. Recommending it to my class.
+0	0	0	support	Support closed my ticket as solved without replying.
+-	-	0	performance	Sometimes slow to sync, but mostly fine.
+1	0	0	price	Cheaper than the competition and does more.
+0	1	0	reliability	Attachments over 20 MB upload forever and then fail with no error.
+0	0	1	reliability	Ten out of ten, would lose my notes again.
+1	0	0	features	The Markdown support is excellent and the shortcuts are sensible.
+0	0	0	design	Too many colours and animations. It feels like a game, not a tool.
+0	-	0	features	Undo only goes back one step, so a misclick wiped a whole page.
+1	0	0	support	The community forum is friendly and the developers actually reply there.

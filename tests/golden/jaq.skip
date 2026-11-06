@@ -1,0 +1,6 @@
+# jq.test programs (by line) where deem prints something other than plain
+# jaq, and why: only where deem differs from jaq on purpose.
+1601	import: deem refuses a program that loads files (plain jaq here has no loader and crashes)
+1618	module: deem's directive is an object with input and defaults; jaq takes any term
+1622	module: as 1618
+2002	fromjson, and tonumber built on it, read exactly one value: jaq reads "2a" as 2, and loops on some invalid text
